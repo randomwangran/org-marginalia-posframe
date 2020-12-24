@@ -64,9 +64,9 @@
                    :internal-border-width 2
                    :background-color "#93937070DBDB"
                    ))
-  ;; if user press C-g, it will not clear the posframe
+  ;; If a user press C-g, it will not clear the posframe.
   ;;
-  ;; if the posframe stick to your screen, please use
+  ;; If the posframe sticks to your screen, please use
   ;;
   ;; M-x posframe-delete-all
   ;;
@@ -88,10 +88,6 @@
                        (point-marker)
                        most-positive-fixnum)))))
   (previous-buffer))
-
-(defun org-marginalia--check-has-marginalia-note-p (point)
-  (interactive "d")
-  (get-char-property point 'om/id))
 
 
 (defun om/next (point)
