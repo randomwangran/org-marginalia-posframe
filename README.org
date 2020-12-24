@@ -1,4 +1,4 @@
-#+TITLE: Org-marginalia
+#+TITLE: Org-marginalia-posframe
 
 [[file:https://img.shields.io/badge/License-GPLv3-blue.svg]]
 
