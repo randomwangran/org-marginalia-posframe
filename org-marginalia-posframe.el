@@ -1,4 +1,4 @@
-;;; org-marginalia-posframe.el --- Highlight the margin note at point  -*- lexical-binding: t; -*-
+;;; org-marginalia-posframe.el --- Show the margin note at point  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2020 Ran Wang
 
