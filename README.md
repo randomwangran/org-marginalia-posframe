@@ -1,1 +1,1 @@
-# org-marginalia-posframe-buffer
+# org-marginalia-posframe
