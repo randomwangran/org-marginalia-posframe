@@ -25,8 +25,8 @@ Set up your ~marginalia.org~ path, for example:
 
 ** change to your key-binding preference
 #+begin_src elisp
-(define-key org-marginalia-mode-map (kbd "C-c }") #'om/next)
-(define-key org-marginalia-mode-map (kbd "C-c {") #'om/prev)
+  (define-key org-marginalia-mode-map (kbd "C-M-}") #'om/next)
+  (define-key org-marginalia-mode-map (kbd "C-M-{") #'om/prev)
 #+end_src
 
 * Usage
