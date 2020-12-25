@@ -6,6 +6,28 @@
 
 #+PROPERTY: LOGGING nil
 
-Org-marginalia-posframe lets you preview the margin notes (marginalia) under point. 
+Org-marginalia-posframe lets you preview the margin notes (marginalia) under point.
 
 [[file:./demo-show-posframe.gif]]
+
+* Setup
+** load to your emacs
+#+begin_src elisp
+(add-to-list 'load-path "<org-marginalia-posframe>")
+(require 'org-marginalia-posframe)
+#+end_src
+
+** setup your notes location
+Set up your ~marginalia.org~ path, for example:
+#+begin_src elisp
+(setq om/notes-file-path "~/Documents/marginalia.org")
+#+end_src
+
+** change to your key-binding preference
+#+begin_src elisp
+(define-key org-marginalia-mode-map (kbd "C-c }") #'om/next)
+(define-key org-marginalia-mode-map (kbd "C-c {") #'om/prev)
+#+end_src
+
+* Usage
+Navigation the hightlighted region using ~om/next~ or ~om/prev~.
