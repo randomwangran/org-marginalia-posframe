@@ -89,31 +89,27 @@
                        most-positive-fixnum)))))
   (previous-buffer))
 
-(defun om/next (point)
-  "Look at the current point, and move to the next highlight, if any.
-If there is none below the point, but there is a highlight in the
+(defun om/next-preview (point)
+  "Look at the current point, move to the next highlight,
+and preview the notes associated with, if any. If there
+is none below the point, but there is a highlight in the
 buffer, go back to the first one."
   (interactive "d")
-  (let ((after-exec-point))
-    (if (not om/highlights) (message "No highlights present in this buffer.")
-      (if (om/find-next-highlight)
-          (progn
-            (goto-char (om/find-next-highlight))
-            (setq after-exec-point (point))
-            (org-marginalia-show-posframe after-exec-point))
-               (message "Nothing done. No more visible highlights exist")))))
+  (if (call-interactively #'om/next)
+      (progn
+        (setq after-exec-point (point))
+        (org-marginalia-show-posframe after-exec-point))))
 
-(defun om/prev (point)
-  "Look at the current point, and move to the previous highlight, if any.
-If there is none above the point, but there is a highlight in the
+(defun om/prev-preview (point)
+  "Look at the current point, move to the previous highlight,
+and preview the notes associated with, if any. If there
+is none below the point, but there is a highlight in the
 buffer, go back to the last one."
   (interactive "d")
-  (if (not om/highlights) (message "No highlights present in this buffer.")
-    (if (om/find-prev-highlight)
-        (progn (goto-char (om/find-prev-highlight))
-               (setq after-exec-point (point))
-               (org-marginalia-show-posframe after-exec-point))
-      (message "Nothing done. No more visible highlights exist"))))
+  (if (call-interactively #'om/prev)
+      (progn
+        (setq after-exec-point (point))
+        (org-marginalia-show-posframe after-exec-point))))
 
 (provide 'org-marginalia-posframe)
 
