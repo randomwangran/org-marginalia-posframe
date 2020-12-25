@@ -111,6 +111,16 @@ buffer, go back to the last one."
         (setq after-exec-point (point))
         (org-marginalia-show-posframe after-exec-point))))
 
+;;;; advice for deleting posframe
+(advice-add 'keyboard-quit :around
+            (lambda (&rest _)
+              (posframe-delete-all)))
+
+(if (fboundp 'keyboard-quit-context+)
+    (advice-add 'keyboard-quit-context+ :around
+            (lambda (&rest _)
+              (posframe-delete-all))))
+
 (provide 'org-marginalia-posframe)
 
 ;;; org-marginalia-posframe.el ends here
