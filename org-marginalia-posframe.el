@@ -5,7 +5,7 @@
 ;; Author: Ran Wang
 ;; URL: https://github.com/randomwangran/org-marginalia-posframe
 ;; Version: 0.0.0
-;; Last Modified: 
+;; Last Modified:
 ;; Package-Requires: ((emacs "27.1") (org "9.4"))
 ;; Keywords: org-mode, annotation, writing, note-taking, margin-notes
 
@@ -76,7 +76,7 @@
 
 (defun org-marginalia--get-contents (id)
   (switch-to-buffer
-   (find-file-noselect "~/Documents/marginalia.org"))
+   (find-file-noselect om/notes-file-path))
   (save-excursion
     (goto-char (org-find-property om/prop-id id))
     (save-excursion
@@ -88,7 +88,6 @@
                        (point-marker)
                        most-positive-fixnum)))))
   (previous-buffer))
-
 
 (defun om/next (point)
   "Look at the current point, and move to the next highlight, if any.
@@ -115,9 +114,6 @@ buffer, go back to the last one."
                (setq after-exec-point (point))
                (org-marginalia-show-posframe after-exec-point))
       (message "Nothing done. No more visible highlights exist"))))
-
-(define-key org-marginalia-mode-map (kbd "C-c }") #'om/next)
-(define-key org-marginalia-mode-map (kbd "C-c {") #'om/prev)
 
 (provide 'org-marginalia-posframe)
 
