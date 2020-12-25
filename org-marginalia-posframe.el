@@ -5,7 +5,6 @@
 ;; Author: Ran Wang
 ;; URL: https://github.com/randomwangran/org-marginalia-posframe
 ;; Version: 0.0.0
-;; Last Modified:
 ;; Package-Requires: ((emacs "27.1") (org "9.4"))
 ;; Keywords: org-mode, annotation, writing, note-taking, margin-notes
 
@@ -26,7 +25,7 @@
 
 ;;; Commentary:
 
-;; This package shows your margin notes (marginalia) at point
+;; This package shows your margin notes (marginalia) at point.
 
 ;;;; Installation
 
@@ -49,6 +48,7 @@
 (require 'org-marginalia)
 
 (defvar org-marginalia-posframe-buffer " *org-marginalia-posframe-buffer*")
+(defvar org-marginalia-posframe-duration 2)
 
 (defun org-marginalia-show-posframe (point)
   (interactive "d")
@@ -62,16 +62,8 @@
     (posframe-show org-marginalia-posframe-buffer
                    :position (point)
                    :internal-border-width 2
-                   :background-color "#93937070DBDB"
-                   ))
-  ;; If a user press C-g, it will not clear the posframe.
-  ;;
-  ;; If the posframe sticks to your screen, please use
-  ;;
-  ;; M-x posframe-delete-all
-  ;;
-  ;; to clear them.
-  (sit-for 2)
+                   :background-color "#93937070DBDB"))
+  (sit-for org-marginalia-posframe-duration)
   (posframe-delete " *org-marginalia-posframe-buffer*"))
 
 (defun org-marginalia--get-contents (id)
@@ -80,13 +72,13 @@
   (save-excursion
     (goto-char (org-find-property om/prop-id id))
     (save-excursion
-     ;; If inside heading contents, move the point back to the heading
-     ;; otherwise `org-agenda-get-some-entry-text' won't work.
-     (unless (org-on-heading-p) (org-previous-visible-heading 1))
-     (setq org-marginalia--contents (substring-no-properties
-                      (org-agenda-get-some-entry-text
-                       (point-marker)
-                       most-positive-fixnum)))))
+      ;; If inside heading contents, move the point back to the heading
+      ;; otherwise `org-agenda-get-some-entry-text' won't work.
+      (unless (org-on-heading-p) (org-previous-visible-heading 1))
+      (setq org-marginalia--contents (substring-no-properties
+                                      (org-agenda-get-some-entry-text
+                                       (point-marker)
+                                       most-positive-fixnum)))))
   (previous-buffer))
 
 (defun om/next-preview (point)
@@ -118,8 +110,8 @@ buffer, go back to the last one."
 
 (if (fboundp 'keyboard-quit-context+)
     (advice-add 'keyboard-quit-context+ :around
-            (lambda (&rest _)
-              (posframe-delete-all))))
+                (lambda (&rest _)
+                  (posframe-delete-all))))
 
 (provide 'org-marginalia-posframe)
 
