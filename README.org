@@ -36,7 +36,7 @@ presented. The unit is second.
 #+begin_src elisp
 (setq org-marginalia-posframe-duration 2)
 #+end_src
-defined var to deside how long posframe exists
+
 * Usage
 ** check the notes under the hightlighted region
 - ~M-x org-marginalia-show-posframe~
