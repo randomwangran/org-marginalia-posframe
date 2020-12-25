@@ -25,9 +25,13 @@ Set up your ~marginalia.org~ path, for example:
 
 ** change to your key-binding preference
 #+begin_src elisp
-  (define-key org-marginalia-mode-map (kbd "C-M-}") #'om/next)
-  (define-key org-marginalia-mode-map (kbd "C-M-{") #'om/prev)
+  (define-key org-marginalia-mode-map (kbd "C-M-}") #'om/next-preview)
+  (define-key org-marginalia-mode-map (kbd "C-M-{") #'om/prev-preview)
 #+end_src
 
 * Usage
-Navigation the hightlighted region using ~om/next~ or ~om/prev~.
+** check the notes under the hightlighted region
+- ~M-x org-marginalia-show-posframe~
+** Navigation the hightlighted region:
+- ~M-x om/next-preview~
+- ~M-x om/prev-preview~
