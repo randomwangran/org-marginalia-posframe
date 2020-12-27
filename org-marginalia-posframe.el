@@ -89,6 +89,7 @@ buffer, go back to the first one."
   (interactive "d")
   (if (call-interactively #'om/next)
       (progn
+        (sit-for 0.1)
         (setq after-exec-point (point))
         (org-marginalia-show-posframe after-exec-point))))
 
@@ -100,6 +101,7 @@ buffer, go back to the last one."
   (interactive "d")
   (if (call-interactively #'om/prev)
       (progn
+        (sit-for 0.1)
         (setq after-exec-point (point))
         (org-marginalia-show-posframe after-exec-point))))
 
