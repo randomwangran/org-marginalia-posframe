@@ -29,17 +29,14 @@ Set up your ~marginalia.org~ path, for example:
   (define-key org-marginalia-mode-map (kbd "C-M-{") #'om/prev-preview)
 #+end_src
 
-** other configuration
-~org-marginalia-posframe-duration~ sets how long the posframe will be
-presented. The unit is second.
-
-#+begin_src elisp
-(setq org-marginalia-posframe-duration 2)
-#+end_src
-
 * Usage
 ** check the notes under the hightlighted region
 - ~M-x org-marginalia-show-posframe~
 ** navigation the hightlighted region:
 - ~M-x om/next-preview~
 - ~M-x om/prev-preview~
+** navigation within the preview note
+   By clicking the link within the posframe, the window will change to
+   the note location.
+** delete all the posframe
+- ~C-g~

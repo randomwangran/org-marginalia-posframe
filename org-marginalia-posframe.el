@@ -4,7 +4,7 @@
 
 ;; Author: Ran Wang
 ;; URL: https://github.com/randomwangran/org-marginalia-posframe
-;; Version: 0.0.0
+;; Version: 0.0.1
 ;; Package-Requires: ((emacs "27.1") (org "9.4"))
 ;; Keywords: org-mode, annotation, writing, note-taking, margin-notes
 
@@ -47,8 +47,7 @@
 (require 'posframe)
 (require 'org-marginalia)
 
-(defvar org-marginalia-posframe-buffer " *org-marginalia-posframe-buffer*")
-(defvar org-marginalia-posframe-duration 2)
+(defvar org-marginalia-posframe-buffer "org-marginalia-posframe-buffer")
 
 (defun org-marginalia-show-posframe (point)
   (interactive "d")
@@ -57,14 +56,16 @@
      (org-marginalia--get-contents id)
      (with-current-buffer (get-buffer-create org-marginalia-posframe-buffer)
        (erase-buffer)
-       (insert org-marginalia--contents))))
+       (insert org-marginalia--contents)
+       (org-mode)
+       (if (not org-descriptive-links) (add-to-invisibility-spec '(org-link))))))
   (when (posframe-workable-p)
     (posframe-show org-marginalia-posframe-buffer
                    :position (point)
                    :internal-border-width 2
-                   :background-color "#93937070DBDB"))
-  (sit-for org-marginalia-posframe-duration)
-  (posframe-delete " *org-marginalia-posframe-buffer*"))
+                   :background-color "#93937070DBDB")))
+
+
 
 (defun org-marginalia--get-contents (id)
   (switch-to-buffer
