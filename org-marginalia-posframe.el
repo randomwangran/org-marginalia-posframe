@@ -48,6 +48,7 @@
 (require 'org-marginalia)
 
 (defvar org-marginalia-posframe-buffer "org-marginalia-posframe-buffer")
+(defvar org-marginalia-posframe-color "#93937070DBDB")
 
 (defun org-marginalia-show-posframe (point)
   (interactive "d")
@@ -63,11 +64,11 @@
     (posframe-show org-marginalia-posframe-buffer
                    :position (point)
                    :internal-border-width 2
-                   :background-color "#93937070DBDB")))
-
-
+                   :background-color org-marginalia-posframe-color)))
 
 (defun org-marginalia--get-contents (id)
+  "Get contents from ID; also decide the background color
+according to TODO state of a headline."
   (switch-to-buffer
    (find-file-noselect om/notes-file-path))
   (save-excursion
@@ -76,6 +77,12 @@
       ;; If inside heading contents, move the point back to the heading
       ;; otherwise `org-agenda-get-some-entry-text' won't work.
       (unless (org-on-heading-p) (org-previous-visible-heading 1))
+      (if (org-get-todo-state)
+          (cond ((string-match (substring-no-properties (org-get-todo-state)) "TODO")
+                 (setq org-marginalia-posframe-color "#Ff4500"))
+                ((string-match (substring-no-properties (org-get-todo-state)) "DONE")
+                 (setq org-marginalia-posframe-color "#7cfc00")))
+        (setq org-marginalia-posframe-color "#93937070DBDB"))
       (setq org-marginalia--contents (substring-no-properties
                                       (org-agenda-get-some-entry-text
                                        (point-marker)
