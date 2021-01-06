@@ -6,7 +6,7 @@
 
 #+PROPERTY: LOGGING nil
 
-Org-marginalia-posframe lets you preview the margin notes (marginalia) under point.
+Org-marginalia-posframe lets you preview the margin notes ([[https://github.com/nobiot/org-marginalia][Org-marginalia]]) under point.
 
 [[file:./demo-show-posframe.gif]]
 
