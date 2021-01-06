@@ -32,11 +32,18 @@ Set up your ~marginalia.org~ path, for example:
 * Usage
 ** check the notes under the hightlighted region
 - ~M-x org-marginalia-show-posframe~
+
 ** navigation the hightlighted region:
 - ~M-x org-marginalia-next-preview~
 - ~M-x org-marginalia-prev-preview~
+
 ** navigation within the preview note
    By clicking the link within the posframe, the window will change to
    the note location.
+
 ** delete all the posframe
 - ~C-g~
+* Ideas
+** TODO edit using a posframe under point
+Now, it will open another buffer to edit the note. It would be nicer
+to edit the note closer to the content.
