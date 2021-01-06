@@ -52,7 +52,7 @@
 
 (defun org-marginalia-show-posframe (point)
   (interactive "d")
-  (let ((id (get-char-property point 'om/id)))
+  (let ((id (get-char-property point 'org-marginalia-id)))
     (progn
      (org-marginalia--get-contents id)
      (with-current-buffer (get-buffer-create org-marginalia-posframe-buffer)
@@ -70,9 +70,9 @@
   "Get contents from ID; also decide the background color
 according to TODO state of a headline."
   (switch-to-buffer
-   (find-file-noselect om/notes-file-path))
+   (find-file-noselect org-marginalia-notes-file-path))
   (save-excursion
-    (goto-char (org-find-property om/prop-id id))
+    (goto-char (org-find-property org-marginalia-prop-id id))
     (save-excursion
       ;; If inside heading contents, move the point back to the heading
       ;; otherwise `org-agenda-get-some-entry-text' won't work.
@@ -95,7 +95,7 @@ and preview the notes associated with, if any. If there
 is none below the point, but there is a highlight in the
 buffer, go back to the first one."
   (interactive "d")
-  (if (call-interactively #'om/next)
+  (if (call-interactively #'org-marginalia-next)
       (progn
         (sit-for 0.1)
         (setq after-exec-point (point))
@@ -107,7 +107,7 @@ and preview the notes associated with, if any. If there
 is none below the point, but there is a highlight in the
 buffer, go back to the last one."
   (interactive "d")
-  (if (call-interactively #'om/prev)
+  (if (call-interactively #'org-marginalia-prev)
       (progn
         (sit-for 0.1)
         (setq after-exec-point (point))

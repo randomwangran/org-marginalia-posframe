@@ -25,8 +25,8 @@ Set up your ~marginalia.org~ path, for example:
 
 ** change to your key-binding preference
 #+begin_src elisp
-  (define-key org-marginalia-mode-map (kbd "C-M-}") #'om/next-preview)
-  (define-key org-marginalia-mode-map (kbd "C-M-{") #'om/prev-preview)
+  (define-key org-marginalia-mode-map (kbd "C-M-}") #'org-marginalia-next-preview)
+  (define-key org-marginalia-mode-map (kbd "C-M-{") #'org-marginalia-prev-preview)
 #+end_src
 
 * Usage
