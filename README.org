@@ -33,8 +33,8 @@ Set up your ~marginalia.org~ path, for example:
 ** check the notes under the hightlighted region
 - ~M-x org-marginalia-show-posframe~
 ** navigation the hightlighted region:
-- ~M-x om/next-preview~
-- ~M-x om/prev-preview~
+- ~M-x org-marginalia-next-preview~
+- ~M-x org-marginalia-prev-preview~
 ** navigation within the preview note
    By clicking the link within the posframe, the window will change to
    the note location.
