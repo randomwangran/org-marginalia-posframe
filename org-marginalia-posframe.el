@@ -89,7 +89,7 @@ according to TODO state of a headline."
                                        most-positive-fixnum)))))
   (previous-buffer))
 
-(defun om/next-preview (point)
+(defun org-marginalia-next-preview (point)
   "Look at the current point, move to the next highlight,
 and preview the notes associated with, if any. If there
 is none below the point, but there is a highlight in the
@@ -101,7 +101,7 @@ buffer, go back to the first one."
         (setq after-exec-point (point))
         (org-marginalia-show-posframe after-exec-point))))
 
-(defun om/prev-preview (point)
+(defun org-marginalia-prev-preview (point)
   "Look at the current point, move to the previous highlight,
 and preview the notes associated with, if any. If there
 is none below the point, but there is a highlight in the
